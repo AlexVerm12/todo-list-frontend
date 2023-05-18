@@ -1,5 +1,7 @@
-<form (ngSubmit)="login()">
-    <input type="text" name="username" [(ngModel)]="username" required>
-    <input type="password" name="password" [(ngModel)]="password" required>
+<div class="wrapper-login">
+  <form (ngSubmit)="login()">
+    <input type="text" name="username" [(ngModel)]="username" required />
+    <input type="password" name="password" [(ngModel)]="password" required />
     <button>Login</button>
-</form>
+  </form>
+</div>

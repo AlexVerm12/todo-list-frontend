@@ -6,12 +6,12 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-all-todos',
   templateUrl: './all-todos.component.html',
-  styleUrls: ['./all-todos.component.scss']
+  styleUrls: ['./all-todos.component.scss'],
 })
 export class AllTodosComponent implements OnInit {
   todos: any = [];
   error = '';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   async ngOnInit() {
     try {
@@ -25,5 +25,4 @@ export class AllTodosComponent implements OnInit {
     const url = environment.baseUrl + '/todos/';
     return lastValueFrom(this.http.get(url));
   }
-
 }

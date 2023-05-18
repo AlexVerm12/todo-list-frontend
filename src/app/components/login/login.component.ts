@@ -5,31 +5,38 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
-  constructor(private as: AuthService, private router: Router) { }
+  constructor(private as: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   async login() {
-
     try {
-      let resp:any = await this.as.loginWithUsernameAndPassword(this.username, this.password);
-      console.log(resp);
+      let resp: any = await this.as.loginWithUsernameAndPassword(
+        this.username,
+        this.password
+      );
       localStorage.setItem('token', resp['token']);
       this.router.navigateByUrl('/todos');
+      console.log(resp);
     } catch (e) {
       alert('Login fehlgeschlagen!');
       console.error(e);
-
     }
+
+    // try {
+    //   let resp:any = await this.as.loginWithUsernameAndPassword(this.username, this.password);
+    //   console.log(resp);
+    //   localStorage.setItem('token', resp['token']);
+    //   this.router.navigateByUrl('/todos');
+    // } catch (e) {
+    //   alert('Login fehlgeschlagen!');
+    //   console.error(e);
+
+    // }
   }
-
-
-
-
 }
